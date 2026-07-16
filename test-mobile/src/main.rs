@@ -64,7 +64,7 @@ const LIB_REPLACE: &str = "TEST_MOBILE_LIB_NAME";
 const CARGO_TARGET: &str = "TEST_MOBILE_CARGO_TARGET";
 const CARGO_PROFILE: &str = "TEST_MOBILE_CARGO_PROFILE";
 
-const REPO: &str = "https://github.com/vlasdasz/test-moblie";
+const REPO: &str = "https://github.com/vlasdasz/test-mobile";
 const REPO_TEMP: &str = "_test_mobile_temp";
 
 #[derive(Debug)]
