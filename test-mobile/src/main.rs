@@ -5,11 +5,11 @@ use std::{
     fs::{File, copy, create_dir, read_dir, read_to_string, remove_dir_all, remove_file},
     io::Write,
     path::{Path, PathBuf},
+    process::Command,
 };
 
 use anyhow::{Result, anyhow, bail};
 use convert_case::{Case, Casing};
-use git2::Repository;
 use structopt::StructOpt;
 use toml::Value;
 
@@ -93,12 +93,17 @@ impl Names {
     }
 }
 
+// Plain git instead of the git2 crate. libgit2 drags a C toolchain into
+// every `cargo install test-mobile`, and a broken host cc breaks installs.
 fn clone_repo(repo_url: &str, dest_path: &str) -> Result<()> {
     let repo_path = Path::new(dest_path);
     if repo_path.exists() {
         remove_dir_all(repo_path)?;
     }
-    Repository::clone(repo_url, repo_path)?;
+    Command::new("git")
+        .args(["clone", "--depth", "1", repo_url, dest_path])
+        .status()?
+        .exit_ok()?;
     Ok(())
 }
 
