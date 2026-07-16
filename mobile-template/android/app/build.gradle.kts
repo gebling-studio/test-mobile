@@ -11,7 +11,9 @@ android {
 
     defaultConfig {
         applicationId = "com.example.TEST_MOBILE_PROJECT_NAME_SNAKE_CASE"
-        minSdk = 21
+        // AAudio, which cpal links against, exists since API 26. Linking a
+        // lower minSdk against it only moves the failure to .so load time.
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
