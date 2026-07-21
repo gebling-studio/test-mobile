@@ -232,6 +232,10 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-Wl,-weak_framework,CoreGraphics",
+					"-Wl,-weak_framework,Security",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = TEST_MOBILE_BINDLE_IDENTIFIER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -263,6 +267,10 @@
 					"$(SDKROOT)/usr/lib/swift",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-Wl,-weak_framework,CoreGraphics",
+					"-Wl,-weak_framework,Security",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = TEST_MOBILE_BINDLE_IDENTIFIER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
